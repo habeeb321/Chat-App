@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:chat_app/core/constants.dart';
 import 'package:chat_app/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +23,9 @@ class LoginController extends ChangeNotifier {
               password: passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        log('No user found for that email.');
+        showSnackbar(context, 'No user found for the email');
       } else if (e.code == 'wrong-password') {
-        log('Wrong password provided for that user.');
+        showSnackbar(context, 'Wrong password provided for the user');
       }
     }
     navigatorKey.currentState!.popUntil((route) => route.isFirst);

@@ -38,3 +38,11 @@ void screenReplacement(context, page) {
 
 // divider
 const divider = Divider(thickness: 2);
+
+// snackbar
+void showSnackbar(context, String text) {
+  final snackbar = SnackBar(
+    content: Text(text),
+  );
+  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+}
