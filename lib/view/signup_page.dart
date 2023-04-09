@@ -2,19 +2,19 @@ import 'dart:developer';
 
 import 'package:chat_app/core/constants.dart';
 import 'package:chat_app/main.dart';
-import 'package:chat_app/view/signup_page.dart';
+import 'package:chat_app/view/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<SignUpPage> {
   final formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login Page'),
+        title: const Text('Signup Page'),
       ),
       body: Form(
         key: formKey,
@@ -108,27 +108,27 @@ class _LoginPageState extends State<LoginPage> {
               ),
               kHeight10,
               ElevatedButton(
-                child: const Text('Login'),
+                child: const Text('Sign up'),
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     // Implement your authentication logic here
-                    signIn();
+                    signUp();
                   }
                 },
               ),
               kHeight10,
               RichText(
                 text: TextSpan(
-                  text: 'No Account? ',
+                  text: 'Already have an Account? ',
                   style: const TextStyle(color: kBlackcolor),
                   children: [
                     TextSpan(
-                      text: 'Register Now',
+                      text: 'Login',
                       style:
                           const TextStyle(decoration: TextDecoration.underline),
                       recognizer: TapGestureRecognizer()
-                        ..onTap = () => nextScreen(context, const SignUpPage()),
+                        ..onTap = () => nextScreen(context, const LoginPage()),
                     ),
                   ],
                 ),
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void signIn() async {
+  void signUp() async {
     showDialog(
       context: context,
       builder: (context) => const Center(
@@ -149,15 +149,17 @@ class _LoginPageState extends State<LoginPage> {
     );
     try {
       UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
+          .createUserWithEmailAndPassword(
               email: emailController.text.trim(),
               password: passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        log('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        log('Wrong password provided for that user.');
+      if (e.code == 'weak-password') {
+        log('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        log('The account already exists for that email.');
       }
+    } catch (e) {
+      log(e.toString());
     }
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
