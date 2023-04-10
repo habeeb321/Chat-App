@@ -1,4 +1,5 @@
 import 'package:chat_app/core/constants.dart';
+import 'package:chat_app/view/forgot_password_page/controller/forgot_pass_controller.dart';
 import 'package:chat_app/view/login_page/controller/login_controller.dart';
 import 'package:chat_app/view/main_page/main_page.dart';
 import 'package:chat_app/view/signup_page/controller/signup_controller.dart';
@@ -39,7 +40,10 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<SignupController>(
           create: (context) => SignupController(),
-        )
+        ),
+        ChangeNotifierProvider<ForgotPassController>(
+          create: (context) => ForgotPassController(),
+        ),
       ],
       child: MaterialApp(
         navigatorKey: navigatorKey,

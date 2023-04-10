@@ -118,7 +118,8 @@ class SignUpPage extends StatelessWidget {
                         TextSpan(
                           text: 'Login',
                           style: const TextStyle(
-                              decoration: TextDecoration.underline),
+                              decoration: TextDecoration.underline,
+                              color: kBlueColor),
                           recognizer: TapGestureRecognizer()
                             ..onTap =
                                 () => nextScreen(context, const LoginPage()),

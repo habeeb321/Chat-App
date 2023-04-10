@@ -1,4 +1,5 @@
 import 'package:chat_app/core/constants.dart';
+import 'package:chat_app/view/forgot_password_page/view/forgot_password.dart';
 import 'package:chat_app/view/login_page/controller/login_controller.dart';
 import 'package:chat_app/view/signup_page/view/signup_page.dart';
 import 'package:flutter/gestures.dart';
@@ -110,6 +111,18 @@ class LoginPage extends StatelessWidget {
                     },
                   ),
                   kHeight10,
+                  InkWell(
+                    onTap: () {
+                      nextScreen(context, const ForgotPasswordPage());
+                    },
+                    child: const Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                          color: kBlueColor,
+                          decoration: TextDecoration.underline),
+                    ),
+                  ),
+                  kHeight10,
                   RichText(
                     text: TextSpan(
                       text: 'No Account? ',
@@ -118,7 +131,8 @@ class LoginPage extends StatelessWidget {
                         TextSpan(
                           text: 'Register Now',
                           style: const TextStyle(
-                              decoration: TextDecoration.underline),
+                              decoration: TextDecoration.underline,
+                              color: kBlueColor),
                           recognizer: TapGestureRecognizer()
                             ..onTap =
                                 () => nextScreen(context, const SignUpPage()),
