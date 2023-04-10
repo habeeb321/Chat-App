@@ -10,6 +10,7 @@ class ForgotPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<ForgotPassController>(context, listen: false);
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: Form(
           key: provider.formKey,
