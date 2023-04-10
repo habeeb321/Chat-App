@@ -134,11 +134,54 @@ class LoginPage extends StatelessWidget {
                               decoration: TextDecoration.underline,
                               color: kBlueColor),
                           recognizer: TapGestureRecognizer()
-                            ..onTap =
-                                () => nextScreen(context, const SignUpPage()),
+                            ..onTap = () => nextScreen(
+                                  context,
+                                  const SignUpPage(),
+                                ),
                         ),
                       ],
                     ),
+                  ),
+                  kHeight20,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          value.signInWithGoogle();
+                        },
+                        child: CircleAvatar(
+                          radius: 35,
+                          backgroundColor: kWhitecolor,
+                          child: Image.asset(
+                            'assets/google.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: CircleAvatar(
+                          radius: 35,
+                          backgroundColor: kWhitecolor,
+                          child: Image.asset(
+                            'assets/facebook.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: CircleAvatar(
+                          radius: 35,
+                          backgroundColor: kWhitecolor,
+                          child: Image.asset(
+                            'assets/github.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               );
