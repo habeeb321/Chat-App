@@ -143,8 +143,10 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   kHeight20,
+                  const Text('OR'),
+                  kHeight20,
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
                         onTap: () {
@@ -159,28 +161,28 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      InkWell(
-                        onTap: () {},
-                        child: CircleAvatar(
-                          radius: 35,
-                          backgroundColor: kWhitecolor,
-                          child: Image.asset(
-                            'assets/facebook.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: CircleAvatar(
-                          radius: 35,
-                          backgroundColor: kWhitecolor,
-                          child: Image.asset(
-                            'assets/github.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
+                      // InkWell(
+                      //   onTap: () {},
+                      //   child: CircleAvatar(
+                      //     radius: 35,
+                      //     backgroundColor: kWhitecolor,
+                      //     child: Image.asset(
+                      //       'assets/facebook.png',
+                      //       fit: BoxFit.cover,
+                      //     ),
+                      //   ),
+                      // ),
+                      // InkWell(
+                      //   onTap: () {},
+                      //   child: CircleAvatar(
+                      //     radius: 35,
+                      //     backgroundColor: kWhitecolor,
+                      //     child: Image.asset(
+                      //       'assets/github.png',
+                      //       fit: BoxFit.cover,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ],
